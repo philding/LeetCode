@@ -19,7 +19,8 @@ public class Topic02_27 {
         int right = 0;
         while (right < length) {
             if (nums[right] != val) {
-                nums[left++] = nums[right];
+                nums[left] = nums[right];
+                left++;
             }
             right++;
         }
