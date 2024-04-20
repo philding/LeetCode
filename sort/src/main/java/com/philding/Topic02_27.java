@@ -8,11 +8,8 @@ public class Topic02_27 {
         int[] arr = {3, 2, 2, 3};
         int var = 3;
         int i = removeElementOptimize(arr, var);
-
         System.out.printf(String.valueOf(i));
         System.out.println(Arrays.toString(arr));
-
-
     }
 
 
