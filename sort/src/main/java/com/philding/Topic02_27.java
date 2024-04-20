@@ -7,8 +7,7 @@ public class Topic02_27 {
     public static void main(String[] args) {
         int[] arr = {3, 2, 2, 3};
         int var = 3;
-        int i = removeElement(arr, var);
-
+        int i = removeElementOptimize(arr, var);
 
         System.out.printf(String.valueOf(i));
         System.out.println(Arrays.toString(arr));
@@ -29,5 +28,21 @@ public class Topic02_27 {
         }
         return left;
     }
+
+    public static int removeElementOptimize(int[] nums, int val) {
+        int left = 0;
+        int right = nums.length;
+        while (left < right) {
+            if (nums[left] == val) {
+                nums[left] = nums[right - 1];
+                right--;
+            } else {
+                left++;
+            }
+        }
+        return left;
+    }
+
+
 
 }
