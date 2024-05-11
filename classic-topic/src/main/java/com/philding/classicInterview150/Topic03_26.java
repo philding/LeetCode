@@ -22,7 +22,8 @@ public class Topic03_26 {
         int right = 0;
         while (right < nums.length) {
             if (nums[right] != nums[left]) {
-                nums[++left] = nums[right];
+                left++;
+                nums[left] = nums[right];
             }
             right++;
         }
