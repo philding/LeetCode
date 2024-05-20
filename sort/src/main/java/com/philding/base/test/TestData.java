@@ -4,7 +4,7 @@ public class TestData {
     public static void main(String[] args) {
 
 
-        int i = 7 / 2;
+        int i = 3 % 7;
         System.out.println(i);
 
     }
