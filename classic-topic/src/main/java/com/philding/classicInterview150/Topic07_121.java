@@ -12,4 +12,40 @@ public class Topic07_121 {
 
 
     }
+
+    public static int maxProfitDP(int[] prices) {
+        int len = prices.length;
+        // 特殊判断
+        if (len < 2) {
+            return 0;
+        }
+        //转态转移方程
+
+
+
+
+        return 0;
+
+    }
+
+
+    public static int maxProfitViolentSolution(int[] prices) {
+        int length = prices.length;
+        if (length < 2) {
+            return 0;
+        }
+
+        int maxProfit = 0;
+
+        for (int i = 0; i < length - 1; i++) {
+            for (int j = i + 1; j < length; j++) {
+                int betterProfit = prices[j] - prices[i];
+                if (betterProfit > maxProfit) {
+                    maxProfit = betterProfit;
+                }
+
+            }
+        }
+        return maxProfit;
+    }
 }
