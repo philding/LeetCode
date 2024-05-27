@@ -6,26 +6,29 @@ public class Topic08_122 {
     }
 
     public static int maxProfit(int[] prices) {
+        int length = prices.length;
+        int[][] dp = new int[length][2];
+        dp[0][0] = -prices[0];
+        dp[0][1] = 0;
+        for (int i = 1; i < length; i++) {
+            //持有
+            dp[i][0] = Math.max(dp[i-1][0],dp[i-1][1]-prices[i]);
+            //不持有
+            dp[i][1] = Math.max(dp[i - 1][0] + prices[i], dp[i - 1][1]);
+        }
+        return dp[length - 1][1];
+    }
 
-        // 可交易次数
-        int k = 1;
-        // [天数][交易次数][是否持有股票]
-        int[][][] dp = new int[prices.length][k + 1][2];
 
-        // bad case
-        dp[0][0][0] = 0;
-        dp[0][0][1] = Integer.MIN_VALUE;
-        dp[0][1][0] = Integer.MIN_VALUE;
-        dp[0][1][1] = -prices[0];
-
+    public int maxProfitEasy(int[] prices) {
+        int sum = 0;
         for (int i = 1; i < prices.length; i++) {
-            for (int j = k; j >= 1; j--) {
-                // dp公式
-                dp[i][j][0] = Math.max(dp[i - 1][j][0], dp[i - 1][j][1] + prices[i]);
-                dp[i][j][1] = Math.max(dp[i - 1][j][1], dp[i - 1][j - 1][0] - prices[i]);
+            if (prices[i] > prices[i - 1]) {
+                int temp = prices[i] - prices[i - 1];
+                sum += temp;
             }
         }
-
-        return dp[prices.length - 1][k][0] > 0 ? dp[prices.length - 1][k][0] : 0;
+        return sum;
     }
+
 }
